@@ -5,7 +5,7 @@ class ComentarioController {
 
   static async buscaTodosComentarios(req, res) {
     try {
-      const todosOsComentarios = await database.Comentario.scope("todos").findAll();
+      const todosOsComentarios = await database.Comentario.findAll();
       return res.status(200).json(todosOsComentarios);
     } catch (error) {
       return res.status(500).json(error.message);
