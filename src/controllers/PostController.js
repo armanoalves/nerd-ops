@@ -4,7 +4,7 @@ const sequelize = require("sequelize");
 class PostController{
     static async lerPosts(req, res) {
       try {
-          const posts = await database.Post.findAll();
+          const posts = await database.Posts.findAll();
           return res.status(200).json(posts);
       } catch (error) {
           return res.status(500).json(error.message);
@@ -15,7 +15,7 @@ class PostController{
       const novoPost = req.body;
 
       try {
-          const novoPostCriado = await database.Post.create(novoPost);
+          const novoPostCriado = await database.Posts.create(novoPost);
           return res.status(201).json(novoPostCriado);
       } catch (error) {
           return res.status(500).json(error.message);
@@ -26,8 +26,8 @@ class PostController{
       const id = req.params.id;
       const novasInformacoes = req.body;
       try {
-          await database.Post.update(novasInformacoes, { where: { id: Number(id) } });
-          const postAtualizado = await database.Post.findOne({ where: { id: Number(id) } });
+          await database.Posts.update(novasInformacoes, { where: { id: Number(id) } });
+          const postAtualizado = await database.Posts.findOne({ where: { id: Number(id) } });
 
           return res.status(200).json(postAtualizado);
       } catch (error) {
@@ -39,7 +39,7 @@ class PostController{
       const id = req.params.id;
 
       try {
-          await database.Post.destroy( { where: { id: Number(id) } });
+          await database.Posts.destroy( { where: { id: Number(id) } });
 
           return res.status(200).json({ mensagem: `ID com o número ${id} foi deletado!` });
       } catch (error) {
