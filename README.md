@@ -14,3 +14,9 @@ npx sequelize-cli db:migrate
 npm run dev 
 ```
 
+## - URL do Swagger
+
+```
+http://localhost:3000/api-docs
+```
+
