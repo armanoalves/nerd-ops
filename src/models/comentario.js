@@ -2,6 +2,32 @@
 const {
   Model
 } = require('sequelize');
+
+/**
+   * @swagger
+   * components:
+   *   schemas:
+   *     Comentario:
+   *       type: object
+   *       required:
+   *         - conteudo
+   *         - usuario_id
+   *         - post_id
+   *       properties:
+   *         id:
+   *           type: integer
+   *           description: ID do comentário
+   *         conteudo:
+   *           type: string
+   *           description: Conteúdo do comentário
+   *         usuario_id:
+   *           type: integer
+   *           description: ID do usuário que fez o comentário
+   *         post_id:
+   *           type: integer
+   *           description: ID do post ao qual o comentário pertence
+   */
+
 module.exports = (sequelize, DataTypes) => {
   class Comentario extends Model {
     /**

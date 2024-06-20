@@ -2,6 +2,32 @@
 const {
   Model
 } = require('sequelize');
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Usuario:
+ *       type: object
+ *       required:
+ *         - nome
+ *         - email
+ *       properties:
+ *         id:
+ *           type: integer
+ *           description: ID do usuário
+ *         nome:
+ *           type: string
+ *           description: Nome do usuário
+ *         email:
+ *           type: string
+ *           description: Email do usuário
+ *         criadoEm:
+ *           type: string
+ *           format: date-time
+ *           description: Data de criação do usuário
+ */
+
 module.exports = (sequelize, DataTypes) => {
   class Usuario extends Model {
     /**
