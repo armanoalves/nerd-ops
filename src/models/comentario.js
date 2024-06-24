@@ -14,9 +14,6 @@ const {
    *         - usuario_id
    *         - post_id
    *       properties:
-   *         id:
-   *           type: integer
-   *           description: ID do comentário
    *         conteudo:
    *           type: string
    *           description: Conteúdo do comentário

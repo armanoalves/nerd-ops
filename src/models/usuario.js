@@ -13,19 +13,15 @@ const {
  *         - nome
  *         - email
  *       properties:
- *         id:
- *           type: integer
- *           description: ID do usuário
- *         nome:
+ *         usuario:
  *           type: string
  *           description: Nome do usuário
  *         email:
  *           type: string
  *           description: Email do usuário
- *         criadoEm:
+ *         senha: 
  *           type: string
- *           format: date-time
- *           description: Data de criação do usuário
+ *           description: Senha do usuário
  */
 
 module.exports = (sequelize, DataTypes) => {

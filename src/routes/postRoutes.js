@@ -80,10 +80,6 @@ router.get("/posts", PostController.lerPosts);
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Posts'
- *       404:
- *         description: Post não encontrado
- *       500:
- *         description: Erro interno no servidor
  */
  router.put("/posts/:id", PostController.atualizarPost);
 
@@ -105,10 +101,6 @@ router.get("/posts", PostController.lerPosts);
  *     responses:
  *       200:
  *         description: Post deletado com sucesso
- *       404:
- *         description: Post não encontrado
- *       500:
- *         description: Erro interno no servidor
  */
  router.delete("/posts/:id", PostController.apagarPost);
 

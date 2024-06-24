@@ -14,9 +14,6 @@ const {
    *         - descricao
    *         - usuario_id
    *       properties:
-   *         id:
-   *           type: integer
-   *           description: ID do post
    *         titulo:
    *           type: string
    *           description: Título do post

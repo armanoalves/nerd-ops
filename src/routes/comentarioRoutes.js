@@ -79,10 +79,6 @@ router.get("/comentario", ComentarioController.buscaTodosComentarios);
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Comentario'
- *       404:
- *         description: Comentário não encontrado
- *       500:
- *         description: Erro interno no servidor
  */
  router.put("/comentario/:id", ComentarioController.atualizarComentario);
 
@@ -102,10 +98,6 @@ router.get("/comentario", ComentarioController.buscaTodosComentarios);
  *     responses:
  *       200:
  *         description: Comentário deletado com sucesso
- *       404:
- *         description: Comentário não encontrado
- *       500:
- *         description: Erro interno no servidor
  */
  router.delete("/comentario/:id", ComentarioController.deletarComentario);
 module.exports = router;

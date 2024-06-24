@@ -76,10 +76,6 @@ router.post("/usuario/", PessoaController.criarUsuario);
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Usuario'
- *       404:
- *         description: Usuário não encontrado
- *       500:
- *         description: Erro interno no servidor
  */
 router.put("/usuario/:id", PessoaController.atualizarUsuario);
 
@@ -99,10 +95,6 @@ router.put("/usuario/:id", PessoaController.atualizarUsuario);
  *     responses:
  *       200:
  *         description: Usuário deletado com sucesso
- *       404:
- *         description: Usuário não encontrado
- *       500:
- *         description: Erro interno no servidor
  */
 router.delete("/usuario/:id", PessoaController.deletarUsuario);
 
