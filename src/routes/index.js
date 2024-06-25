@@ -9,6 +9,6 @@ module.exports = app => {
         bodyPaser.json(),
         usuario,
         comentario,
-        post
+        post,
     );
 }
