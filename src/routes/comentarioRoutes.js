@@ -1,6 +1,7 @@
 const { Router } = require("express");
 
 const ComentarioController = require("../controllers/ComentarioController");
+const authenticateToken = require("../utils/authMiddleware");
  
 const router = Router();
 
@@ -15,6 +16,8 @@ const router = Router();
  * @swagger
  * /comentario:
  *   get:
+ *     security:
+ *       - bearerAuth: []
  *     summary: Retorna todos os comentários
  *     tags: [Comentarios]
  *     responses:
@@ -28,12 +31,14 @@ const router = Router();
  *                 $ref: '#/components/schemas/Comentario'
  */
 
-router.get("/comentario", ComentarioController.buscaTodosComentarios);
+router.get("/comentario", authenticateToken, ComentarioController.buscaTodosComentarios);
 
 /**
  * @swagger
  * /comentario:
  *   post:
+ *     security:
+ *       - bearerAuth: []
  *     summary: Cria um novo comentário
  *     tags: [Comentarios]
  *     requestBody:
@@ -51,12 +56,14 @@ router.get("/comentario", ComentarioController.buscaTodosComentarios);
  *               $ref: '#/components/schemas/Comentario'
  */
 
- router.post("/comentario", ComentarioController.criarComentario);
+ router.post("/comentario", authenticateToken, ComentarioController.criarComentario);
  
  /**
  * @swagger
  * /comentario/{id}:
  *   put:
+ *     security:
+ *       - bearerAuth: []
  *     summary: Atualiza um comentário existente
  *     tags: [Comentarios]
  *     parameters:
@@ -80,12 +87,14 @@ router.get("/comentario", ComentarioController.buscaTodosComentarios);
  *             schema:
  *               $ref: '#/components/schemas/Comentario'
  */
- router.put("/comentario/:id", ComentarioController.atualizarComentario);
+ router.put("/comentario/:id", authenticateToken, ComentarioController.atualizarComentario);
 
  /**
  * @swagger
  * /comentario/{id}:
  *   delete:
+ *     security:
+ *       - bearerAuth: []
  *     summary: Deleta um comentário existente
  *     tags: [Comentarios]
  *     parameters:
@@ -99,5 +108,5 @@ router.get("/comentario", ComentarioController.buscaTodosComentarios);
  *       200:
  *         description: Comentário deletado com sucesso
  */
- router.delete("/comentario/:id", ComentarioController.deletarComentario);
+ router.delete("/comentario/:id", authenticateToken, ComentarioController.deletarComentario);
 module.exports = router;

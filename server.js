@@ -1,12 +1,18 @@
 const cors = require("cors")
 const express = require("express");
 const routes = require("./src/routes");
-const { swaggerUi, swaggerDocs } = require('./swagger');
+
+require('dotenv').config();
+
+const { swaggerUi, swaggerDocs } = require("./src/utils/swagger");
 
 const app = express();
 const port = 3000; 
 
 app.use(cors())
+
+// Middleware para interpretar JSON
+app.use(express.json());
 
 routes(app);
 

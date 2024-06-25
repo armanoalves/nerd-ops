@@ -20,6 +20,17 @@ const swaggerOptions = {
   apis: ['./src/routes/*.js', './src/models/*.js'] // Caminho para os arquivos de rotas e modelos
 };
 
+// Adicionar autenticação JWT Bearer ao Swagger
+swaggerOptions.swaggerDefinition.components = {
+  securitySchemes: {
+    bearerAuth: {
+      type: 'http',
+      scheme: 'bearer',
+      bearerFormat: 'JWT',
+    },
+  },
+};
+
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 
 module.exports = { swaggerUi, swaggerDocs };

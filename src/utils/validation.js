@@ -4,14 +4,14 @@ const Joi = require('joi');
 
 const registerValidator = (data) => {
     const schema = Joi.object({
-        username: Joi.string()
-            .min(6)
+        usuario: Joi.string()
+            .min(3)
             .required(),
         email: Joi.string()
             .min(6)
             .required()
             .email(),
-        password: Joi.string()
+        senha: Joi.string()
             .min(6)
             .required()
     });
@@ -24,7 +24,7 @@ const loginValidator = (data) => {
             .min(6)
             .required()
             .email(),
-        password: Joi.string()
+        senha: Joi.string()
             .min(6)
             .required()
     });

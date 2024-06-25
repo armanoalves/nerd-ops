@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const PostController = require("../controllers/PostController");
+const authenticateToken = require("../utils/authMiddleware")
  
 const router = Router();
 
@@ -14,6 +15,8 @@ const router = Router();
  * @swagger
  * /posts:
  *   get:
+ *     security:
+ *       - bearerAuth: []
  *     summary: Retorna todos os posts
  *     tags: [Posts]
  *     responses:
@@ -27,12 +30,14 @@ const router = Router();
  *                 $ref: '#/components/schemas/Posts'
  */
 
-router.get("/posts", PostController.lerPosts);
+router.get("/posts", authenticateToken ,PostController.lerPosts);
 
 /**
  * @swagger
  * /posts:
  *   post:
+ *     security:
+ *       - bearerAuth: []
  *     summary: Cria um novo post
  *     tags: [Posts]
  *     requestBody:
@@ -50,7 +55,7 @@ router.get("/posts", PostController.lerPosts);
  *               $ref: '#/components/schemas/Posts'
  */
 
- router.post("/posts", PostController.criarPost);
+ router.post("/posts", authenticateToken, PostController.criarPost);
 
 
  
@@ -58,6 +63,8 @@ router.get("/posts", PostController.lerPosts);
  * @swagger
  * /posts/{id}:
  *   put:
+ *     security:
+ *       - bearerAuth: []
  *     summary: Atualiza um post existente
  *     tags: [Posts]
  *     parameters:
@@ -81,7 +88,7 @@ router.get("/posts", PostController.lerPosts);
  *             schema:
  *               $ref: '#/components/schemas/Posts'
  */
- router.put("/posts/:id", PostController.atualizarPost);
+ router.put("/posts/:id", authenticateToken, PostController.atualizarPost);
 
 
 
@@ -89,6 +96,8 @@ router.get("/posts", PostController.lerPosts);
  * @swagger
  * /posts/{id}:
  *   delete:
+ *     security:
+ *       - bearerAuth: []
  *     summary: Deleta um post existente
  *     tags: [Posts]
  *     parameters:
@@ -102,6 +111,6 @@ router.get("/posts", PostController.lerPosts);
  *       200:
  *         description: Post deletado com sucesso
  */
- router.delete("/posts/:id", PostController.apagarPost);
+ router.delete("/posts/:id", authenticateToken, PostController.apagarPost);
 
 module.exports = router;
