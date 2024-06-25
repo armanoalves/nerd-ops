@@ -3,14 +3,6 @@ const PostController = require("../controllers/PostController");
 const authenticateToken = require("../utils/authMiddleware")
  
 const router = Router();
-<<<<<<< HEAD
-router
- .get("/posts", PostController.lerPosts)
- .post("/posts", PostController.criarPost)
- .put("/posts/:id", PostController.atualizarPost)
- .delete("/posts/:id", PostController.apagarPost)
- .get("/posts/buscar", PostController.buscarPostPorNome);
-=======
 
 /**
  * @swagger
@@ -120,6 +112,47 @@ router.get("/posts", authenticateToken ,PostController.lerPosts);
  *         description: Post deletado com sucesso
  */
  router.delete("/posts/:id", authenticateToken, PostController.apagarPost);
->>>>>>> 46e1585554dcfe9fffc5ad74c7a5805fefa1f4d3
+
+/**
+ * @swagger
+ * /posts/buscar:
+ *   get:
+ *     security:
+ *       - bearerAuth: []
+ *     summary: Filtra posts com base no título e autor
+ *     tags: [Posts]
+ *     parameters:
+ *       - in: query
+ *         name: titulo
+ *         schema:
+ *           type: string
+ *         required: false
+ *         description: Título do post
+ *       - in: query
+ *         name: autor
+ *         schema:
+ *           type: string
+ *         required: false
+ *         description: Autor do post
+ *     responses:
+ *       200:
+ *         description: Lista de posts filtrados
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Post'
+ *       400:
+ *         description: Erro na filtragem dos posts
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ */
+ router.get("/posts/buscar", PostController.buscarPostPorNome);
 
 module.exports = router;
