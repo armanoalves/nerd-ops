@@ -1,22 +1,10 @@
 const database = require("../models");
-const sequelize = require("sequelize");
 
 class UsuarioController {
     static async buscaTodosUsuarios(req, res) {
         try {
             const usuarios = await database.Usuario.findAll();
             return res.status(200).json(usuarios);
-        } catch (error) {
-            return res.status(500).json(error.message);
-        }
-    }
-
-    static async criarUsuario(req, res) {
-        const novoUsuario = req.body;
-
-        try {
-            const novoUsuarioCriado = await database.Usuario.create(novoUsuario);
-            return res.status(201).json(novoUsuarioCriado);
         } catch (error) {
             return res.status(500).json(error.message);
         }

@@ -1,6 +1,7 @@
 const { Router } = require("express");
 
 const PessoaController = require("../controllers/usuarioController");
+const authenticateToken = require("../service/authMiddleware");
 
 const router = Router();
 
@@ -28,27 +29,25 @@ const router = Router();
  *                 $ref: '#/components/schemas/Usuario'
  */
 router.get("/usuario", PessoaController.buscaTodosUsuarios);
+
 /**
  * @swagger
- * /usuario:
- *   post:
- *     summary: Cria um novo usuário
- *     tags: [Usuarios]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             $ref: '#/components/schemas/Usuario'
+ * /protected:
+ *   get:
+ *     security:
+ *       - bearerAuth: []
+ *     summary: Obter dados protegidos
  *     responses:
- *       201:
- *         description: Usuário criado
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Usuario'
+ *       200:
+ *         description: Resposta bem-sucedida
+ *       401:
+ *         description: Não autorizado
+ *       403:
+ *         description: Proibido
  */
-router.post("/usuario/", PessoaController.criarUsuario);
+router.get('/protected', authenticateToken, (req, res) => {
+    res.json({ message: 'Esses são dados protegidos.' });
+  });
 
 /**
  * @swagger
