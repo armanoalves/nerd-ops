@@ -7,5 +7,6 @@ router
  .post("/posts", PostController.criarPost)
  .put("/posts/:id", PostController.atualizarPost)
  .delete("/posts/:id", PostController.apagarPost)
+ .get("/posts/buscar", PostController.buscarPostPorNome);
 
 module.exports = router;
