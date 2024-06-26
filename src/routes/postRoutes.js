@@ -119,7 +119,7 @@ router.get("/posts", authenticateToken ,PostController.lerPosts);
  *   get:
  *     security:
  *       - bearerAuth: []
- *     summary: Filtra posts com base no título e autor
+ *     summary: Filtra posts com base no tï¿½tulo e autor
  *     tags: [Posts]
  *     parameters:
  *       - in: query
@@ -127,9 +127,9 @@ router.get("/posts", authenticateToken ,PostController.lerPosts);
  *         schema:
  *           type: string
  *         required: false
- *         description: Título do post
+ *         description: Tï¿½tulo do post
  *       - in: query
- *         name: autor
+ *         name: usuario
  *         schema:
  *           type: string
  *         required: false
